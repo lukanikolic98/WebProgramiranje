@@ -3,6 +3,8 @@ package dao;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +23,14 @@ public class UserDAO {
 		loadUsers(contextPath);
 	}
 	
+	public User find(String username) {
+		if (!users.containsKey(username)) {
+			return null;
+		}
+		User user = users.get(username);
+		return user;
+	}
+	
 	public User find(String username, String password) {
 		if (!users.containsKey(username)) {
 			return null;
@@ -30,6 +40,9 @@ public class UserDAO {
 			return null;
 		}
 		return user;
+	}
+	public void add(User user) {
+		users.put(user.getUsername(), user);
 	}
 	
 	public Collection<User> findAll() {
@@ -67,6 +80,20 @@ public class UserDAO {
 				}
 				catch (Exception e) { }
 			}
+		}
+	}
+
+	public void saveUsers(String contextPath) {
+		// napraviti pisanje u txt file
+		try {
+			FileWriter writer = new FileWriter(contextPath + "/users.txt", false);
+			for (User user : users.values()) {
+					writer.write(user.toString());
+			}
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
