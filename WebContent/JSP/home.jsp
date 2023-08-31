@@ -3,10 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="${pageContext.request.contextPath}/loginRegister.css" rel="stylesheet" type="text/css" >
 <meta charset="ISO-8859-1">
 <title>Hello World</title>
 </head>
 <body>
- <h1> Hello World!</h1>
+	<%@ include file = "header.jsp" %>
+	<div id="loginForm">
+		<h1>Welcome Home!</h1>
+	</div>
+	
 </body>
 </html>
