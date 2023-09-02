@@ -7,10 +7,22 @@
 </head>
 <body>
 	<div id="loginForm">
-		<form action="LoginServlet" method="POST">
+		<form action="RegisterServlet" method="POST">
 			<h1> Welcome to Web Book Social Network!</h1>
 			<div class="input_box">
-			<input type="text" placeholder="Username" name ="username" required>
+			<input type="text" placeholder="First Name" name ="firstname" required>
+			</div>
+			<br/>
+			<div class="input_box">
+			<input type="text" placeholder="Last Name" name ="lastname" required>			
+			</div>
+			<br/>
+			<div class="input_box">
+			<input type="email" placeholder="Email" name ="email" required>			
+			</div>
+			<br/>
+			<div class="input_box">
+			<input type="username" placeholder="Username" name ="username" required>			
 			</div>
 			<br/>
 			<div class="input_box">
@@ -20,9 +32,9 @@
 				<p style="color: red"><%=request.getAttribute("err")%>></p>
 			<% } %>
 			<br/>
-			<button type="submit" value="Login">Log in</button>
+			<button type="submit" value="Register">Register</button>
 			<div id="registerText">
-				<p>Don't have an account?<a href="RegisterServlet">Register</a></p>
+				<p>Already have an account?<a href="#">Log in</a></p>
 			</div>
 		</form>
 	</div>

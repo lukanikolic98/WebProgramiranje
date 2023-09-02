@@ -14,12 +14,14 @@ import beans.User;
 
 public class UserDAO {
 	private Map<String, User> users = new HashMap<>();
+	private String contextPath;
 	
 	public UserDAO() {
 		
 	}
 	
 	public UserDAO(String contextPath) {
+		this.contextPath = contextPath;
 		loadUsers(contextPath);
 	}
 	
@@ -67,7 +69,8 @@ public class UserDAO {
 					String email = st.nextToken().trim();
 					String username = st.nextToken().trim();
 					String password = st.nextToken().trim();
-					users.put(username, new User(firstName, lastName, email, username, password));
+					String role = st.nextToken().trim();
+					users.put(username, new User(firstName, lastName, email, username, password, role));
 				}
 				
 			}
@@ -83,10 +86,10 @@ public class UserDAO {
 		}
 	}
 
-	public void saveUsers(String contextPath) {
-		// napraviti pisanje u txt file
+	public void saveUsers() {
+		// Pisanje u users.txt fajl
 		try {
-			FileWriter writer = new FileWriter(contextPath + "/users.txt", false);
+			FileWriter writer = new FileWriter(this.contextPath + "/users.txt", false);
 			for (User user : users.values()) {
 					writer.write(user.toString());
 			}

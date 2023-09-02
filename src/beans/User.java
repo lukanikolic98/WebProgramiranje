@@ -6,16 +6,18 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
+	private String role;
 	
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String email, String username, String password) {
+	public User(String firstName, String lastName, String email, String username, String password, String role) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.role = role;
 	}
 	
 	public String getFirstName() {
@@ -48,7 +50,24 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String toString() {
-		return firstName+";"+lastName+";"+email+";"+username+";"+password;
+		return firstName+";"+lastName+";"+email+";"+username+";"+password+";"+role;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null || (getClass() != obj.getClass())) {
+			return false;
+		}
+		User user = (User) obj; 
+		if(!user.getUsername().toLowerCase().equals(this.username.toLowerCase())){
+			return false;
+		}
+		return true;
 	}
 }

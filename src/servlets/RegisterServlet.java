@@ -34,6 +34,11 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = (User) request.getSession().getAttribute("user");
+		if(user != null) {
+			response.sendRedirect("HomeServlet");
+			return;
+		}
 		RequestDispatcher disp = request.getRequestDispatcher("/JSP/register.jsp");
 		disp.forward(request, response);
 	}
@@ -47,6 +52,7 @@ public class RegisterServlet extends HttpServlet {
     	String email = request.getParameter("email");
     	String username = request.getParameter("username");
     	String password = request.getParameter("password");
+    	String role = "User";
     	ServletContext context = getServletContext();
     	UserDAO users = (UserDAO) context.getAttribute("users");
     	User user = users.find(username);
@@ -57,10 +63,9 @@ public class RegisterServlet extends HttpServlet {
 	    	return;
     	}
     	// napraviti novoregistrovanog USERA i zapisati izmene u fajl
-    	user = new User( firstname,  lastname,  email,  username,  password);
+    	user = new User( firstname,  lastname,  email,  username,  password, role);
     	users.add(user);
-    	String contextPath = context.getRealPath("");
-    	users.saveUsers(contextPath);
+    	users.saveUsers();
     	HttpSession session = request.getSession();
     	session.setAttribute("user", user);
     	response.sendRedirect("HomeServlet");

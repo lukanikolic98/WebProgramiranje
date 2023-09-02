@@ -3,12 +3,12 @@
 <html>
 <head>
 <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css" >
-<meta charset="ISO-8859-1">
 </head>
 <body>
  <div id="header">
  	<a href="www.google.com">Google</a>
  	<a>About</a>
+ 	<a href="LogoutServlet">Logout</a>
  </div>
 </body>
 </html>
