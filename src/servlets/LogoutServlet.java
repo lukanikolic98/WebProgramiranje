@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDAO;
+
 
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +21,9 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if (session != null && session.getAttribute("user") != null) {
-		session.invalidate();
+	    	UserDAO users = (UserDAO) getServletContext().getAttribute("users");
+	    	users.cleanResult();
+			session.invalidate();
 		}
 		response.sendRedirect("LoginServlet");
 	}

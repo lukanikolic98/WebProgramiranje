@@ -6,9 +6,16 @@
 </head>
 <body>
  <div id="header">
- 	<a href="www.google.com">Google</a>
- 	<a>About</a>
- 	<a href="LogoutServlet">Logout</a>
+ 	<a id="headerLeft" href="HomeServlet">Home</a>
+ 	<div class="searchContainer">
+	<form action="SearchServlet" method="GET">
+		<input type="text" name="searchTerm" placeholder="Search..." required>
+	</form>
+ 	</div>
+ 	<div class="headerButtonsRight">
+ 		<a href="https://www.google.com">Account</a>
+	 	<a href="LogoutServlet">Logout</a>
+ 	</div>
  </div>
 </body>
 </html>

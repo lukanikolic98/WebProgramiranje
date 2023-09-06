@@ -28,13 +28,7 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-		RequestDispatcher disp = request.getRequestDispatcher("/LoginServlet");
-		disp.forward(request, response);
-		return;
-		}
+		
 		RequestDispatcher disp = request.getRequestDispatcher("/JSP/home.jsp");
 		disp.forward(request, response);
 	}

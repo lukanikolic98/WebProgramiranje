@@ -52,7 +52,14 @@ public class RegisterServlet extends HttpServlet {
     	String email = request.getParameter("email");
     	String username = request.getParameter("username");
     	String password = request.getParameter("password");
+    	String confirmPassword = request.getParameter("confirmpassword");
     	String role = "User";
+    	String gender = request.getParameter("gender");
+    	if (!password.equals(confirmPassword)) {
+    		request.setAttribute("err", "Passwords dont match!");
+    		doGet(request, response);
+    		return;
+    	}
     	ServletContext context = getServletContext();
     	UserDAO users = (UserDAO) context.getAttribute("users");
     	User user = users.find(username);
@@ -63,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
 	    	return;
     	}
     	// napraviti novoregistrovanog USERA i zapisati izmene u fajl
-    	user = new User( firstname,  lastname,  email,  username,  password, role);
+    	user = new User( firstname,  lastname,  email,  username,  password, role, gender, Boolean.TRUE);
     	users.add(user);
     	users.saveUsers();
     	HttpSession session = request.getSession();

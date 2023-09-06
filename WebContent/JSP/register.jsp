@@ -10,31 +10,46 @@
 		<form action="RegisterServlet" method="POST">
 			<h1> Welcome to Web Book Social Network!</h1>
 			<div class="input_box">
-			<input type="text" placeholder="First Name" name ="firstname" required>
+				<input type="text" placeholder="First Name" name ="firstname" required>
 			</div>
 			<br/>
 			<div class="input_box">
-			<input type="text" placeholder="Last Name" name ="lastname" required>			
+				<input type="text" placeholder="Last Name" name ="lastname" required>			
 			</div>
 			<br/>
 			<div class="input_box">
-			<input type="email" placeholder="Email" name ="email" required>			
+				<input type="email" placeholder="Email" name ="email" required>			
 			</div>
 			<br/>
 			<div class="input_box">
-			<input type="username" placeholder="Username" name ="username" required>			
+				<input type="username" placeholder="Username" name ="username" required>			
 			</div>
 			<br/>
 			<div class="input_box">
-			<input type="password" placeholder="Password" name ="password" required>			
+				<input type="password" placeholder="Password" name ="password" required>			
+			</div>
+			<br/>
+			<div class="input_box">
+				<input type="password" placeholder="Confirm Password" name ="confirmpassword" required>			
+			</div>
+			<br/>
+			<div class="input_box">
+				<div class="radioWrapper">
+					<label for="male">Male</label>				
+					<input type="radio" id="male" name="gender" value="male"> 
+				</div>
+				<div class="radioWrapper">
+					<label for="female">Female</label>
+					<input type="radio" id="female" name="gender" value="female">
+				</div>
 			</div>
 			<% if (request.getAttribute("err") != null) { %>
-				<p style="color: red"><%=request.getAttribute("err")%>></p>
+				<p style="color: red"><%=request.getAttribute("err")%></p>
 			<% } %>
 			<br/>
 			<button type="submit" value="Register">Register</button>
 			<div id="registerText">
-				<p>Already have an account?<a href="#">Log in</a></p>
+				<p>Already have an account?<a href="LoginServlet">Log in</a></p>
 			</div>
 		</form>
 	</div>
