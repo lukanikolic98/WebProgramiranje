@@ -40,8 +40,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
 		if(user != null) {
-			response.sendRedirect("HomeServlet");
-			return;
+			if(user.getUsername() != null) {
+				response.sendRedirect("HomeServlet");
+				return;
+			}		
 		}
 		RequestDispatcher disp = request.getRequestDispatcher("/JSP/login.jsp");
 		disp.forward(request, response);

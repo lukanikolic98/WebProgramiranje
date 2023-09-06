@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${pageContext.request.contextPath}/loginRegister.css" rel="stylesheet" type="text/css" >
 <jsp:useBean id="user" class="beans.User" scope="session"/>
 <jsp:useBean id="users" class="dao.UserDAO" scope="application"/>
+<jsp:useBean id="searchResult" class="dao.ResultDAO" scope="request"/>
 <title>The Social Network</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
 	</div>
 	<main>
 		<div class="wrapper_inner">
-			<% for(User u : users.getResult()) {%>
+			<% for(User u : searchResult.getUsersResult()) {%>
 				<div class="search-item">
 					<label><%=u.getFirstName() %></label>
 					<label><%=u.getLastName() %></label>

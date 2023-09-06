@@ -10,15 +10,11 @@
 		<form action="RegisterServlet" method="POST">
 			<h1> Welcome to Web Book Social Network!</h1>
 			<div class="input_box">
-				<input type="text" placeholder="First Name" name ="firstname" required>
+				<input type="text" placeholder="First Name" name ="firstName" required>
 			</div>
 			<br/>
 			<div class="input_box">
-				<input type="text" placeholder="Last Name" name ="lastname" required>			
-			</div>
-			<br/>
-			<div class="input_box">
-				<input type="email" placeholder="Email" name ="email" required>			
+				<input type="text" placeholder="Last Name" name ="lastName" required>			
 			</div>
 			<br/>
 			<div class="input_box">
@@ -26,11 +22,15 @@
 			</div>
 			<br/>
 			<div class="input_box">
+				<input type="email" placeholder="Email" name ="email" required>			
+			</div>
+			<br/>
+			<div class="input_box">
 				<input type="password" placeholder="Password" name ="password" required>			
 			</div>
 			<br/>
 			<div class="input_box">
-				<input type="password" placeholder="Confirm Password" name ="confirmpassword" required>			
+				<input type="password" placeholder="Confirm Password" name ="confirmPassword" required>			
 			</div>
 			<br/>
 			<div class="input_box">

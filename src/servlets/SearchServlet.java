@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -10,10 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 
 import beans.User;
 import dao.UserDAO;
+import dao.ResultDAO;
 
 /**
  * Servlet implementation class SearchServlet
@@ -42,7 +41,7 @@ public class SearchServlet extends HttpServlet {
 		String searchTerm = request.getParameter("searchTerm");
 		if(searchTerm != null) {
 			// search bar search
-			users.searchUsers(searchTerm, user);
+			request.setAttribute("searchResult", new ResultDAO(users.searchUsers(searchTerm, user)));
 			RequestDispatcher disp = request.getRequestDispatcher("HomeServlet");
 			disp.forward(request, response);
 			return;

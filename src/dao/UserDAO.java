@@ -20,7 +20,6 @@ public class UserDAO {
 	private String contextPath;
 	
 	public UserDAO() {
-		
 	}
 	
 	public UserDAO(String contextPath) {
@@ -46,18 +45,18 @@ public class UserDAO {
 		}
 		return user;
 	}
-	public void searchUsers(String searchTerm, User user) {
+	public List<User> searchUsers(String searchTerm, User user) {
 		String[] tokens = searchTerm.split(" ");
 		usersResult = new ArrayList<>();
 		for(User temp : users.values()) {
 			for(String term : tokens)
 			if(temp.getFirstName().toLowerCase().contains(term.toLowerCase()) || temp.getLastName().toLowerCase().contains(term.toLowerCase()))
 				//TODO: dodati proveru da li je u spisku prijatelja
-				if(user != null || temp.getPublicStatus() == true)
+				if(user != null || temp.getPublicStatus() == true) {
 					usersResult.add(temp);
-			
+				}
 		}
-		return;
+		return usersResult;
 	}
 	public void searchUsers(String firstName, String lastName, String startDate, String endDate, User user) {
 		return;
@@ -71,9 +70,6 @@ public class UserDAO {
 	}
 	public List<User> getResult(){
 		return usersResult;
-	}
-	public void cleanResult() {
-		usersResult = new ArrayList<>();
 	}
 	// Loading users from users.txt file
 	private void loadUsers(String contextPath) {

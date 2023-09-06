@@ -47,12 +47,12 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String firstname = request.getParameter("firstname");
-    	String lastname = request.getParameter("lastname");
+    	String firstname = request.getParameter("firstName");
+    	String lastname = request.getParameter("lastName");
     	String email = request.getParameter("email");
     	String username = request.getParameter("username");
     	String password = request.getParameter("password");
-    	String confirmPassword = request.getParameter("confirmpassword");
+    	String confirmPassword = request.getParameter("confirmPassword");
     	String role = "User";
     	String gender = request.getParameter("gender");
     	if (!password.equals(confirmPassword)) {

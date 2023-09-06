@@ -13,7 +13,7 @@
 	</form>
  	</div>
  	<div class="headerButtonsRight">
- 		<a href="https://www.google.com">Account</a>
+ 		<a href="EditProfileServlet">Account</a>
 	 	<a href="LogoutServlet">Logout</a>
  	</div>
  </div>

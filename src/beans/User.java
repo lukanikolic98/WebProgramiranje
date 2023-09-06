@@ -62,10 +62,10 @@ public class User {
 		this.role = role;
 	}
 	public String getGender() {
-		return role;
+		return gender;
 	}
-	public void setGender(String role) {
-		this.role = role;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public Boolean getPublicStatus() {
 		return publicStatus;
